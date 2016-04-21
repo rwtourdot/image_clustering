@@ -27,10 +27,7 @@ channel = 0
 lum_img,len_lum,ori_img = load_png_image_file(path_to_file,channel)
 
 # this code seperates out the R G or B color channels
-#channel is 1,2, or 3 is sets the contrast 
-#channel = 0 # for trichrome stain - cutoff 0.2,0.4
-#channel = 0 for pink stain
-# for cd31 stain - cutoff 0.5,0.6,0.7
+# cutoff 0.5,0.6,0.7
 
 #ori_img = img
 #lum_img = img[:,:,channel]  #img[:,:,1] img[:,:,2]
