@@ -72,8 +72,8 @@ ax2.set_title('Clusters')
 if len(cmx) > 0:
 	#ax1.triplot(cmy,cmx,tri.simplices.copy())
 	ax2.scatter(cmy,cmx,s=rga,c=aratio,alpha = 0.6)
-ax2.set_xlim([0,1000])
-ax2.set_ylim([0,1000])
+ax2.set_xlim([0,len_lum[0]])
+ax2.set_ylim([0,len_lum[1]])
 ax2.invert_yaxis()
 ax2.set_aspect('equal',adjustable='box')
 
@@ -81,8 +81,8 @@ ax3.set_title('Connectivity')
 if len(cmx) > 0:
 	ax3.triplot(cmy,cmx,tri.simplices.copy())
 	#ax3.scatter(cmy,cmx,s=rga,c=aratio,alpha = 0.6)
-ax3.set_xlim([0,1000])
-ax3.set_ylim([0,1000])
+ax3.set_xlim([0,len_lum[0]])
+ax3.set_ylim([0,len_lum[1]])
 ax3.invert_yaxis()
 ax3.set_aspect('equal',adjustable='box')
 
@@ -90,11 +90,10 @@ ax4.set_title('Voronoi')
 if len(cmx) > 0:
 	voronoi_plot_2d(vor,ax4)
 	#ax4.scatter(cmy,cmx,s=rga,c=aratio,alpha = 0.6)
-ax4.set_xlim([0,1000])
-ax4.set_ylim([0,1000])
+ax4.set_xlim([0,len_lum[0]])
+ax4.set_ylim([0,len_lum[1]])
 ax4.invert_yaxis()
 ax4.set_aspect('equal',adjustable='box')
-
 
 
 plt.tight_layout()
