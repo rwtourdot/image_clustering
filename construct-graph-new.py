@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import sys,math,copy
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -14,25 +13,19 @@ def load_png_image_file(fid,channel):
 	len_lum = np.shape(lum_img)	
 	return lum_img,len_lum,org_img
 
-# this line of code reads image data into an RGB array with three values
+#####################  Construct new Graph Plot from Clusters ######################
+
 path_to_file = str(sys.argv[1])
 cutoff = float(sys.argv[2])
 
-magfile = path_to_file.split('/')[-1]
-directory = path_to_file.split('/')[0:-1]
+magfile = os.path.basename(path_to_file)
+directory = os.path.dirname(path_to_file)
 print "/".join(directory) + "/" + magfile
 
-#img = mpimg.imread(path_to_file)
-channel = 0
+# cutoff 0.5,0.6,0.7
+channel = 0  #1,2
 lum_img,len_lum,ori_img = load_png_image_file(path_to_file,channel)
 
-# this code seperates out the R G or B color channels
-# cutoff 0.5,0.6,0.7
-
-#ori_img = img
-#lum_img = img[:,:,channel]  #img[:,:,1] img[:,:,2]
-
-#cutoff = 0.6
 lum_img[lum_img > cutoff] = np.nan
 lum_img[abs(lum_img) < cutoff] = 1.0
 lum_img[lum_img == np.nan] = 0.0
@@ -46,8 +39,7 @@ for c in clust_cut:
 	c.geometry_calculations()
 print "done cluster_cleanup"
 
-xypos = []
-vorxy = []
+xypos = []; vorxy = []
 for c in clust_cut:
 	xypos.append((c.xcent,c.ycent))
 	vorxy.append((c.ycent,c.xcent))
@@ -80,7 +72,6 @@ ax2.set_aspect('equal',adjustable='box')
 ax3.set_title('Connectivity')
 if len(cmx) > 0:
 	ax3.triplot(cmy,cmx,tri.simplices.copy())
-	#ax3.scatter(cmy,cmx,s=rga,c=aratio,alpha = 0.6)
 ax3.set_xlim([0,len_lum[0]])
 ax3.set_ylim([0,len_lum[1]])
 ax3.invert_yaxis()
@@ -89,7 +80,6 @@ ax3.set_aspect('equal',adjustable='box')
 ax4.set_title('Voronoi')
 if len(cmx) > 0:
 	voronoi_plot_2d(vor,ax4)
-	#ax4.scatter(cmy,cmx,s=rga,c=aratio,alpha = 0.6)
 ax4.set_xlim([0,len_lum[0]])
 ax4.set_ylim([0,len_lum[1]])
 ax4.invert_yaxis()
@@ -98,5 +88,7 @@ ax4.set_aspect('equal',adjustable='box')
 
 plt.tight_layout()
 #plt.show()
-fig.savefig("/".join(directory) + "/voronoi_cluster_cutoff_"+ str(cutoff) +"_"+magfile,dpi=300)
+new_file_name = "voronoi_cluster_cutoff_"+ str(cutoff) +"_"+magfile
+out_file = os.path.join(directory,new_file_name) 
+fig.savefig(out_file,dpi=300)
 
