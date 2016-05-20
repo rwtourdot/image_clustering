@@ -37,7 +37,7 @@ def load_png_image_file(fid,channel):
 	return lum_img,len_lum,org_img
 
 def get_near_list(i,pixel_region,mlen):
-	irange = range(i-pixel_region,i+pixel_region,1); to_pop = [];
+	irange = range(i-pixel_region,i+pixel_region+1,1); to_pop = [];
 	for i2 in irange:
 		if i2 < 0 or i2 >= mlen:
 			to_pop.append(i2) 				
