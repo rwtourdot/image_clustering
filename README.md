@@ -3,9 +3,9 @@
 requires python packages: numpy,sys,math,copy,matplotlib,scipy
 
 run as:
-'''
+```
 ./construct-graph-new.py ARGV[1] ARGV[2]
-'''
+```
 where:
 
 ARGV[1] is path to a image file: png,jpeg
