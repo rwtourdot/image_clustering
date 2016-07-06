@@ -2,7 +2,10 @@
 2d clustering of cell histology data
 requires python packages: numpy,sys,math,copy,matplotlib,scipy
 
-run as ./construct-graph-new.py ARGV[1] ARGV[2]
+run as:
+'''
+./construct-graph-new.py ARGV[1] ARGV[2]
+'''
 where:
 
 ARGV[1] is path to a image file: png,jpeg
