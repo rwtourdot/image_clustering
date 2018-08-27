@@ -8,7 +8,7 @@ from scipy.spatial import Delaunay,Voronoi,voronoi_plot_2d
 
 def load_png_image_file(fid,channel):
 	img = mpimg.imread(path_to_file)
-        org_img = copy.deepcopy(img)
+	org_img = copy.deepcopy(img)
 	if np.max(img) > 1: img = img/255.0; print "base 255";
 	lum_img = img[:,:,channel]  #chooseing one of three img[:,:,1] img[:,:,2]
 	len_lum = np.shape(lum_img)	
